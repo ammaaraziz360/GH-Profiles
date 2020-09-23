@@ -1,5 +1,7 @@
 <html>
     <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>GitHubProfileSite</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script
@@ -20,23 +22,33 @@
               GitHubProfileSite
             </a>
             <div class="jusify-content-center">
-                <form class="form-inline">
+                <form class="form-inline" onSubmit="return false;"> 
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">@</span>
                     </div class="text-center">
                         <input type="text" id="username" placeholder="Username">
-                        <button type="button" class="btn btn-outline-dark" onclick="changeUsername()">Go</button>
+                        <button id="subBtn" type="button" class="btn btn-outline-dark" onclick="changeUsername()">Go</button>
                     </div>
                 </form>
             </div>
+            <script>
+                $(document).keypress(function(e) {
+                    var keyCode = e.keyCode;
+                    if(keyCode == 13){
+                        document.getElementById("subBtn").click()
+                    }
+                });
+            </script>
           </nav>
         <div>
         
         <div class="text-center">
-            <h1 id="Name">
-                Search for a username to get started   
-            </h1>
+            <div>
+                <h1 id="Name">
+                    Search for a username to get started   
+                </h1>
+            </div>
             <div>
                 <img id="pfp">
                 <i id="fail" class="" style="font-size: xx-large;"></i>
