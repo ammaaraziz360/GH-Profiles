@@ -9,18 +9,19 @@ function changeUsername(){
   staticUrl = baseURL.concat(username)
   console.log(staticUrl)
 
+  //get request for staticUrl
   $.getJSON(staticUrl, function(data) {
     console.log("It works!")
     console.log(data);
     jsonobj = data
 
-    document.getElementById("fail").classList.remove("far")
-    document.getElementById("fail").classList.remove("fa-frown")
+    document.getElementById("fail").classList.remove("far", "fa-frown")
 
     changeName(jsonobj.name)
     changePFP(jsonobj.avatar_url)
     changeDate(jsonobj.created_at, jsonobj.updated_at)
   })
+  //if user is not found
   .fail(function(){
     console.log("It failed")
     document.getElementById("Name").innerHTML = "Error: User not found"
@@ -28,31 +29,36 @@ function changeUsername(){
     document.getElementById("fail").className = "far fa-frown"
     document.getElementById("created").innerHTML = ""
     document.getElementById("updated").innerHTML = ""
+    document.getElementById("age").innerHTML = ""
   })
   
 
 }
 
 function changeName(name){
+  //changes the name
   document.getElementById("Name").innerHTML = name;
 }
 
 function changePFP(pfp){
+  //changes the profile pic
   document.getElementById("pfp").src = pfp
 }
 
 function changeDate(created, updated){
+  //parses the date into a array
   var created_dates = [created.substring(0,4), created.substring(8,10), created.substring(5,7)]
   var updated_dates = [updated.substring(0,4), updated.substring(8,10), updated.substring(5,7)]
 
+  //creates a date object for the created_dates and current date variable
   var created_date_obj = new Date(created_dates[0], created_dates[1], created_dates[2])
   var current_date = new Date()
 
+  //does math to find age of account
   var age = current_date.getTime() - created_date_obj.getTime()
   var age = Math.round((age / (1000 * 3600 * 24))/365)
 
-  alert(age)
-
+  //changes the html
   if(age == 1){
     document.getElementById("age").innerHTML = `Account is ${age} year old`
   }
