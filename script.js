@@ -31,6 +31,8 @@ function changeUsername(){
     document.getElementById("created").innerHTML = ""
     document.getElementById("updated").innerHTML = ""
     document.getElementById("age").innerHTML = ""
+    document.getElementById("frs").innerHTML = ""
+    document.getElementById("fwg").innerHTML = ""
   })
   
 
