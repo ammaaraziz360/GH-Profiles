@@ -20,6 +20,7 @@ function changeUsername(){
     changeName(jsonobj.name)
     changePFP(jsonobj.avatar_url)
     changeDate(jsonobj.created_at, jsonobj.updated_at)
+    changeFollow(jsonobj.followers, jsonobj.following)
   })
   //if user is not found
   .fail(function(){
@@ -46,12 +47,16 @@ function changePFP(pfp){
 }
 
 function changeDate(created, updated){
+  //yyyy-mm-dd
   //parses the date into a array
-  var created_dates = [created.substring(0,4), created.substring(8,10), created.substring(5,7)]
-  var updated_dates = [updated.substring(0,4), updated.substring(8,10), updated.substring(5,7)]
+  var created_dates = [created.substring(0,4), created.substring(5,7),  created.substring(8,10)]
+  var updated_dates = [updated.substring(0,4), updated.substring(5,7), updated.substring(8,10)]
+
+  created_dates[2] = parseInt(created_dates[2])
 
   //creates a date object for the created_dates and current date variable
-  var created_date_obj = new Date(created_dates[0], created_dates[1], created_dates[2])
+  var date = created_dates[0] +"-"+ created_dates[1] +"-"+ created_dates[2]
+  var created_date_obj = new Date(date)
   var current_date = new Date()
 
   //does math to find age of account
@@ -70,3 +75,8 @@ function changeDate(created, updated){
   document.getElementById("updated").innerHTML = `Last updated on ${updated_dates[0]}`
 }
 
+function changeFollow(following, followers){
+  //update followers and following 
+  document.getElementById("frs").innerHTML = `Followers: ${followers}`
+  document.getElementById("fwg").innerHTML = `Following: ${following}`
+}
