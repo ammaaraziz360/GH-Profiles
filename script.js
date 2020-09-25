@@ -1,6 +1,7 @@
 var username = 'ammaaraziz360'
 var baseURL = 'https://api.github.com/users/'
 var staticUrl = baseURL.concat(username)
+var cnt = 0
 
 var jsonobj 
 
@@ -16,17 +17,23 @@ function changeUsername(){
     jsonobj = data
 
     document.getElementById("fail").classList.remove("far", "fa-frown")
-
-    changeName(jsonobj.name)
+    if(cnt == 0){
+      document.getElementById("start").remove()
+    }
+    changeName(jsonobj.name, username)
     changePFP(jsonobj.avatar_url)
     changeDate(jsonobj.created_at, jsonobj.updated_at)
     changeFollow(jsonobj.followers, jsonobj.following)
+    cnt += 1 
   })
   //if user is not found
   .fail(function(){
     console.log("It failed")
     document.getElementById("Name").innerHTML = "Error: User not found"
     document.getElementById("pfp").src = ""
+
+    document.getElementById("pfp").classList.remove("responsive")
+
     document.getElementById("fail").className = "far fa-frown"
     document.getElementById("created").innerHTML = ""
     document.getElementById("updated").innerHTML = ""
@@ -38,12 +45,20 @@ function changeUsername(){
 
 }
 
-function changeName(name){
+function changeName(name, un){
   //changes the name
-  document.getElementById("Name").innerHTML = name;
+  alert(un)
+  if(name == null){
+    document.getElementById("Name").innerHTML = "No name found"
+  }
+  else{
+    document.getElementById("Name").innerHTML = name;
+  }
+  document.getElementById("un").innerHTML = `@${un}`
 }
 
 function changePFP(pfp){
+  document.getElementById("pfp").classList.add("responsive")
   //changes the profile pic
   document.getElementById("pfp").src = pfp
 }

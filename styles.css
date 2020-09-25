@@ -1,0 +1,21 @@
+body{
+    background-color: gray;
+}
+#bodysec{
+    background-color: #5f686b;
+}
+#header{
+    background-color: black;
+}
+h1{
+    color: white;
+}
+.responsive{
+    width: 100%;
+    height: auto;
+}
+@media screen and (max-width: 1000px) {
+    #un {
+      font-size: 100px;
+    }
+  }

@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>GH Profiles</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
         <script
         src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -16,10 +17,9 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-                <i class="fab fa-github"></i></img>
-              GH Profiles
+        <nav class="navbar navbar-dark" style="background-color: black;">
+            <a class="navbar-brand" href="home.html">
+                <img src="images/logo_site.png" width="150" height="30" alt="">
             </a>
             <div class="jusify-content-center">
                 <form class="form-inline" onSubmit="return false;"> 
@@ -28,7 +28,7 @@
                         <span class="input-group-text" id="basic-addon1">@</span>
                     </div class="text-center">
                         <input type="text" id="username" placeholder="Username">
-                        <button id="subBtn" type="button" class="btn btn-outline-dark" onclick="changeUsername()">Go</button>
+                        <button id="subBtn" type="button" class="btn btn-outline-light" onclick="changeUsername()">Go</button>
                     </div>
                 </form>
             </div>
@@ -42,19 +42,32 @@
             </script>
           </nav>
         <div>
-        
-        
-        <div class="text-center container-fluid">
-            <div>
-                <h1 id="Name">
-                    Search for a username to get started   
+
+
+        <div class="container-fluid m-0" id="header">
+            <h1 id="start" class="text-center">
+                Search for a username to get started   
+            </h1>
+            <div class="row">
+                <div class="col-3">
+                    <img id="pfp" class="responsive">
+                    <i id="fail" class="" style="font-size: xx-large;"></i>
+                </div>
+                <div class="d-flex col-9 justify-content-start align-items-center">
+                    <h1 id="Name" style="font-size:5vw">
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                </div>
+                <div class="col-9">
+                    <h1 id="un" style="font-size:1vw">
                 </h1>
             </div>
-            <div>
-                <img id="pfp">
-                <i id="fail" class="" style="font-size: xx-large;"></i>
             </div>
-
+        </div>
+        <div class="text-center container" id="bodysec">
             <div>
                 <h5 id="created">
                 </h5>
