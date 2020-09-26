@@ -20,6 +20,7 @@ function changeUsername(){
     if(cnt == 0){
       document.getElementById("start").remove()
     }
+    //initiate html changes
     changeName(jsonobj.name, username)
     changePFP(jsonobj.avatar_url)
     changeDate(jsonobj.created_at, jsonobj.updated_at)
@@ -47,7 +48,6 @@ function changeUsername(){
 
 function changeName(name, un){
   //changes the name
-  alert(un)
   if(name == null){
     document.getElementById("Name").innerHTML = "No name found"
   }

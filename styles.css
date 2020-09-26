@@ -16,6 +16,6 @@ h1{
 }
 @media screen and (max-width: 1000px) {
     #un {
-      font-size: 100px;
+      font-size: 3vw; 
     }
   }
