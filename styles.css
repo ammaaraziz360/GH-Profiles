@@ -10,12 +10,19 @@ body{
 h1{
     color: white;
 }
+#follower{
+    background-color: #1a1a1a;
+    color: white;
+}
 .responsive{
     width: 100%;
     height: auto;
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 750px) {
     #un {
       font-size: 3vw; 
+    }
+    #follow_setup, #follower_setup, #age, #age_setup{
+        font-size: 3vw;
     }
   }

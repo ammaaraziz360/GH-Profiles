@@ -81,11 +81,13 @@ function changeDate(created, updated){
   var age = Math.round((age / (1000 * 3600 * 24))/365)
 
   //changes the html
+  document.getElementById("age_setup").innerHTML = "Account Age"
+
   if(age == 1){
-    document.getElementById("age").innerHTML = `Account is ${age} year old`
+    document.getElementById("age").innerHTML = `${age} years`
   }
   else{
-    document.getElementById("age").innerHTML = `Account is ${age} years old`
+    document.getElementById("age").innerHTML = `${age} years`
   }
 
   document.getElementById("created").innerHTML = `Account created on ${created_dates[0]}`
@@ -94,6 +96,10 @@ function changeDate(created, updated){
 
 function changeFollow(following, followers){
   //update followers and following 
-  document.getElementById("frs").innerHTML = `Followers: ${followers}`
-  document.getElementById("fwg").innerHTML = `Following: ${following}`
+  document.getElementById("follow_setup").innerHTML = "Following"
+  document.getElementById("follower_setup").innerHTML = "Followers"
+
+
+  document.getElementById("frs").innerHTML = followers
+  document.getElementById("fwg").innerHTML = following
 }
