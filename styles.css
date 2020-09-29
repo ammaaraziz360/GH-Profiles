@@ -2,13 +2,20 @@ body{
     background-color: gray;
 }
 #bodysec{
-    background-color: #5f686b;
+    background-color: white;
+    color: black;
+}
+#bodysec h5{
+    text-align: right;
 }
 #header{
     background-color: black;
 }
 h1{
     color: white;
+}
+#outer{
+    background-color: #1a1a1a;
 }
 #follower{
     background-color: #1a1a1a;

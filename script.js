@@ -20,12 +20,13 @@ function changeUsername(){
     if(cnt == 0){
       document.getElementById("start").remove()
     }
+    cnt += 1 
     //initiate html changes
     changeName(jsonobj.name, username)
     changePFP(jsonobj.avatar_url)
     changeDate(jsonobj.created_at, jsonobj.updated_at)
     changeFollow(jsonobj.followers, jsonobj.following)
-    cnt += 1 
+    changeSidebar(jsonobj.company, jsonobj.blog, jsonobj.email, jsonobj.hireable)
   })
   //if user is not found
   .fail(function(){
@@ -102,4 +103,27 @@ function changeFollow(following, followers){
 
   document.getElementById("frs").innerHTML = followers
   document.getElementById("fwg").innerHTML = following
+}
+
+function changeSidebar(company, blog, location, email, hireable){
+  
+  var items = [company, blog, location, email, hireable]
+  var labels = ["company", "blog", "location", "email", "hireable"]
+
+  var items_v2 = []
+  var labels_v2 = []
+
+  for(i = 0; i < labels.length; i++){
+    var itemsbool = items[i] == null
+    if(itemsbool == false){
+      items_v2.push(items[i])
+      labels_v2.push(labels[i])
+    }
+  }
+  if(items_v2.length > 1){
+    for(i = 0; i < items_v2.length; i++){
+      document.getElementById(labels_v2[i]).innerHTML = items_v2[i]
+    }
+  }
+
 }
