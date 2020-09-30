@@ -25,6 +25,10 @@ h1{
     width: 100%;
     height: auto;
 }
+.responsive_small{
+    width: 25%;
+    height: auto;
+}
 @media screen and (max-width: 750px) {
     #un {
       font-size: 3vw; 

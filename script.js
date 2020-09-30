@@ -27,24 +27,19 @@ function changeUsername(){
     changeDate(jsonobj.created_at, jsonobj.updated_at)
     changeFollow(jsonobj.followers, jsonobj.following)
     changeSidebar(jsonobj.company, jsonobj.blog, jsonobj.email, jsonobj.hireable)
+    initFollow(jsonobj.followers_url)
   })
   //if user is not found
   .fail(function(){
+    var items_to_remove = ["created","updated","age","frs","fwg", "un","company", "blog", "location", "email", "hireable"]
     console.log("It failed")
     document.getElementById("Name").innerHTML = "Error: User not found"
-    document.getElementById("pfp").src = ""
-
     document.getElementById("pfp").classList.remove("responsive")
-
-    document.getElementById("fail").className = "far fa-frown"
-    document.getElementById("created").innerHTML = ""
-    document.getElementById("updated").innerHTML = ""
-    document.getElementById("age").innerHTML = ""
-    document.getElementById("frs").innerHTML = ""
-    document.getElementById("fwg").innerHTML = ""
+    document.getElementById("pfp").src = ""
+    for(i = 0; i < items_to_remove.length; i++){
+      document.getElementById(items_to_remove[i]).innerHTML = ""
+    }
   })
-  
-
 }
 
 function changeName(name, un){
@@ -126,4 +121,16 @@ function changeSidebar(company, blog, location, email, hireable){
     }
   }
 
+}
+
+function initFollow(url){
+  document.getElementById("followers").innerHTML = ""
+  $.getJSON(url, function(data) {
+    console.log("It works!")
+    console.log(data);
+
+    for(i = 0; i < data.length; i++){
+      document.getElementById("followers").innerHTML += `<img src=${data[i].avatar_url} class="responsive_small"></img>`
+    }
+  })
 }
