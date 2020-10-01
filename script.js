@@ -130,7 +130,15 @@ function initFollow(url){
     console.log(data);
 
     for(i = 0; i < data.length; i++){
-      document.getElementById("followers").innerHTML += `<img src=${data[i].avatar_url} class="responsive_small"></img>`
+      document.getElementById("followers").innerHTML += `<div class="col-lg-2 col-md-4 col-xs-3">
+                                                            <div class="card text-white bg-dark" style="width: 15rem;">
+                                                              <img class="card-img-top" src=${data[i].avatar_url} alt="Card image cap">
+                                                              <div class="card-body">
+                                                                <h5 class="card-title">${data[i].login}</h5>
+                                                                <a href=${data[i].html_url} class="btn btn-light" target="_blank">Go to user</a>
+                                                              </div>
+                                                            </div>
+                                                          <div>`
     }
   })
 }
