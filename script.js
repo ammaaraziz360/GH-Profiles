@@ -9,7 +9,7 @@ function changeUsername(){
   username = document.getElementById("username").value;
   staticUrl = baseURL.concat(username)
   console.log(staticUrl)
-
+  document.getElementById("followers").innerHTML = ""
   //get request for staticUrl
   $.getJSON(staticUrl, function(data) {
     console.log("It works!")
@@ -27,7 +27,42 @@ function changeUsername(){
     changeDate(jsonobj.created_at, jsonobj.updated_at)
     changeFollow(jsonobj.followers, jsonobj.following)
     changeSidebar(jsonobj.company, jsonobj.blog, jsonobj.email, jsonobj.hireable)
-    initFollow(jsonobj.followers_url)
+  })
+  //if user is not found
+  .fail(function(){
+    var items_to_remove = ["created","updated","age","frs","fwg", "un","company", "blog", "location", "email", "hireable"]
+    console.log("It failed")
+    document.getElementById("Name").innerHTML = "Error: User not found"
+    document.getElementById("pfp").classList.remove("responsive")
+    document.getElementById("pfp").src = ""
+    for(i = 0; i < items_to_remove.length; i++){
+      document.getElementById(items_to_remove[i]).innerHTML = ""
+    }
+  })
+}
+
+//used when changing users when not using search bar
+function changeUsernameALT(nextUser){
+  staticUrl = baseURL.concat(nextUser)
+  console.log(staticUrl)
+  document.getElementById("followers").innerHTML = ""
+  //get request for staticUrl
+  $.getJSON(staticUrl, function(data) {
+    console.log("It works!")
+    console.log(data);
+    jsonobj = data
+
+    document.getElementById("fail").classList.remove("far", "fa-frown")
+    if(cnt == 0){
+      document.getElementById("start").remove()
+    }
+    cnt += 1 
+    //initiate html changes
+    changeName(jsonobj.name, nextUser)
+    changePFP(jsonobj.avatar_url)
+    changeDate(jsonobj.created_at, jsonobj.updated_at)
+    changeFollow(jsonobj.followers, jsonobj.following)
+    changeSidebar(jsonobj.company, jsonobj.blog, jsonobj.email, jsonobj.hireable)
   })
   //if user is not found
   .fail(function(){
@@ -123,7 +158,9 @@ function changeSidebar(company, blog, location, email, hireable){
 
 }
 
-function initFollow(url){
+//create BS cards for followers 
+function initFollower(){
+  var url = jsonobj.followers_url
   document.getElementById("followers").innerHTML = ""
   $.getJSON(url, function(data) {
     console.log("It works!")
@@ -135,7 +172,30 @@ function initFollow(url){
                                                               <img class="card-img-top" src=${data[i].avatar_url} alt="Card image cap">
                                                               <div class="card-body">
                                                                 <h5 class="card-title">${data[i].login}</h5>
-                                                                <a href=${data[i].html_url} class="btn btn-light" target="_blank">Go to user</a>
+                                                                <button class="btn btn-light" type="button" onclick="changeUsernameALT('${data[i].login}')">Go to user</button>
+                                                              </div>
+                                                            </div>
+                                                          <div>`
+    }
+  })
+}
+
+//creates BS cards for following 
+function initFollowing(){
+  var url = jsonobj.following_url
+  url = url.substring(0, url.length - 13)
+  document.getElementById("followers").innerHTML = ""
+  $.getJSON(url, function(data) {
+    console.log("It works!")
+    console.log(data);
+
+    for(i = 0; i < data.length; i++){
+      document.getElementById("followers").innerHTML += `<div class="col-lg-2 col-md-4 col-xs-3">
+                                                            <div class="card text-white bg-dark" style="width: 15rem;">
+                                                              <img class="card-img-top" src=${data[i].avatar_url} alt="Card image cap">
+                                                              <div class="card-body">
+                                                                <h5 class="card-title">${data[i].login}</h5>
+                                                                <button class="btn btn-light" type="button" onclick="changeUsernameALT('${data[i].login}')">Go to user</button>
                                                               </div>
                                                             </div>
                                                           <div>`

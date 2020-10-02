@@ -29,6 +29,10 @@ h1{
     width: 25%;
     height: auto;
 }
+.btn:hover {
+    background-color: #1a1a1a !important;
+    color: white;
+}
 @media screen and (max-width: 750px) {
     #un {
       font-size: 3vw; 
@@ -36,4 +40,4 @@ h1{
     #follow_setup, #follower_setup, #age, #age_setup{
         font-size: 3vw;
     }
-  }
+}
