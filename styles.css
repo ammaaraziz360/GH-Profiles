@@ -41,3 +41,6 @@ h1{
         font-size: 3vw;
     }
 }
+.follow_box:hover{
+    background-color: gray;
+}

@@ -167,15 +167,14 @@ function initFollower(){
     console.log(data);
 
     for(i = 0; i < data.length; i++){
-      document.getElementById("followers").innerHTML += `<div class="col-lg-2 col-md-4 col-xs-3">
-                                                            <div class="card text-white bg-dark" style="width: 15rem;">
-                                                              <img class="card-img-top" src=${data[i].avatar_url} alt="Card image cap">
-                                                              <div class="card-body">
-                                                                <h5 class="card-title">${data[i].login}</h5>
-                                                                <button class="btn btn-light" type="button" onclick="changeUsernameALT('${data[i].login}')">Go to user</button>
-                                                              </div>
+      document.getElementById("followers").innerHTML += `<div class='row border rounded m-2 p-2 follow_box'>
+                                                            <div class='col-5'>
+                                                            <img class='responsive_small rounded-circle'src=${data[i].avatar_url} alt="Card image cap" style="width:100px;height:100px;float:left">
                                                             </div>
-                                                          <div>`
+                                                            <div class='col-7 d-flex align-items-center'>
+                                                              <h3 style="color:white;">${data[i].login}</h3>
+                                                            </div>
+                                                          </div>`
     }
   })
 }
