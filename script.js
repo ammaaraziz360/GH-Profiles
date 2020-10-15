@@ -121,8 +121,8 @@ function changeDate(created, updated){
     document.getElementById("age").innerHTML = `${age} years`
   }
 
-  document.getElementById("created").innerHTML = `Account created on ${created_dates[0]}`
-  document.getElementById("updated").innerHTML = `Last updated on ${updated_dates[0]}`
+  document.getElementById("created").innerHTML = `${created_dates[1]}/${created_dates[2]}/${created_dates[0]}`
+  document.getElementById("updated").innerHTML = `${updated_dates[1]}/${updated_dates[2]}/${updated_dates[0]}`
 }
 
 function changeFollow(following, followers){
@@ -136,12 +136,15 @@ function changeFollow(following, followers){
 }
 
 function changeSidebar(company, blog, location, email, hireable){
-  
+  //FIXME clear contents of the divs
   var items = [company, blog, location, email, hireable]
   var labels = ["company", "blog", "location", "email", "hireable"]
 
   var items_v2 = []
   var labels_v2 = []
+  for(i = 0; i < labels.length;i++){
+    document.getElementById(labels[i]).innerHTML = ""
+  }
 
   for(i = 0; i < labels.length; i++){
     var itemsbool = items[i] == null
