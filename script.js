@@ -9,6 +9,125 @@ function changeUsername(){
   username = document.getElementById("username").value;
   staticUrl = baseURL.concat(username)
   console.log(staticUrl)
+  document.getElementById("inner-content").innerHTML = `<div class="row">
+  <div class="col-3">
+      <img id="pfp" class="responsive rounded-circle">
+      <i id="fail" class="" style="font-size: xx-large;"></i>
+  </div>
+  <div class="d-flex col-9 justify-content-start align-items-center">
+      <h1 id="Name" style="font-size:5vw">
+      </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+  </div>
+  <div class="col-9">
+      <h1 id="un" >
+  </h1>
+  </div>
+</div>
+<div id="follower">
+  <div class="container">
+      <div class="row p-3">
+          <div class="col-3">
+              <h5 id="follow_setup" style="font-weight: bold;">
+              </h5>
+              <button class="btn btn-light" type="button" onclick="initFollowing()">
+                  <h5 id="frs">
+                  </h5>
+              </button>
+          </div>
+          <div class="col-3">
+              <h5 id="follower_setup" style="font-weight: bold;">
+              </h5>
+              <button class="btn btn-light" type="button" onclick="initFollower()">
+                  <h5 id="fwg">
+                  </h5>
+              </button>
+          </div>
+          <div class="col-3 justify-content-end">
+          </div>
+          <div class="col-3" id="age_set">
+              <h5 id="age_setup" style="font-weight: bold;">
+
+              </h5>
+              <h5 id="age">
+              </h5>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+<div class="text-center container" id="outer">
+<div class="row border">
+  <div class="col-md-4 col-xs-12 p-3" id="bodysec">
+      <div class="row">
+          <div class="col-2 d-flex justify-content-start">
+              <i class="fas fa-briefcase" style="font-size: x-large;"></i>
+          </div>
+          <div class="col-10 d-flex justify-content-start">
+              <h5 id="company">
+              </h5>
+          </div>
+      </div>
+      <div>
+          <div class="row">
+              <div class="col-2 d-flex justify-content-start">
+                  <i class="fas fa-link" style="font-size: x-large;"></i>
+              </div>
+              <div class="col-10 d-flex justify-content-start">
+                  <h5 id="blog">
+                  </h5>
+              </div>
+          </div>
+      </div>
+      <div>
+          <h5 id="location">
+          </h5>
+      </div>
+      <div>
+          <div class="row">
+              <div class="col-2 d-flex justify-content-start" style="font-size: x-large;">
+                  <i class="fas fa-envelope"></i>
+              </div>
+              <div class="col-10 d-flex justify-content-start">
+                  <h5 id="email">
+                  </h5>
+              </div>
+          </div>
+      </div>
+      <div>
+          <h5 id="hireable">
+          </h5>
+      </div>
+      <div>
+          <div class="row">
+              <div class="col-2 d-flex justify-content-start">
+                  <i class="fas fa-birthday-cake" style="font-size: x-large;"></i>
+              </div>
+              <div class="col-10 d-flex justify-content-start">
+                  <h5 id="created">
+                  </h5>
+              </div>
+          </div>
+      </div>
+      <div>
+          <div class="row">
+              <div class="col-2 d-flex justify-content-start">
+                  <i class="fas fa-edit" style="font-size: x-large;"></i>
+              </div>
+              <div class="col-10 d-flex justify-content-start">
+                  <h5 id="updated">
+                  </h5>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="m-0" id="followers">
+</div>
+</div>`;
   document.getElementById("followers").innerHTML = ""
   //get request for staticUrl
   $.getJSON(staticUrl, function(data) {
@@ -43,6 +162,7 @@ function changeUsername(){
 
 //used when changing users when not using search bar
 function changeUsernameALT(nextUser){
+  
   staticUrl = baseURL.concat(nextUser)
   console.log(staticUrl)
   document.getElementById("followers").innerHTML = ""
